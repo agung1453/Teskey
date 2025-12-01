@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environment Test</title>
+  <style>
+    body { 
+      background:#141414; color:#eee; font-family:Arial; 
+      display:flex; justify-content:center; align-items:center;
+      height:100vh; flex-direction:column;
+    }
+    button {
+      background:#8aaee0; padding:10px 20px; border:none; 
+      border-radius:5px; cursor:pointer; color:#141414; font-weight:bold;
+    }
+    pre {
+      background:#1f1f1f; padding:10px; border-radius:6px; width:300px;
+      margin-top:15px; font-size:14px; word-wrap:break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔐 Token via Serverless API</h2>
+  <button onclick="getToken()">Get Token</button>
+
+  <pre id="output">Click the button...</pre>
+
+  <script>
+    async function getToken() {
+      const res = await fetch('/api/secret');
+      const data = await res.json();
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+
+</body>
+</html>
